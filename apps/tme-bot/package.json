@@ -1,0 +1,28 @@
+{
+    "name": "tme-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon ./src/index.ts",
+        "dev-node": "ts-node-dev --respawn --transpile-only src/index.ts",
+        "start": "node ./build/index.js",
+        "build": "tsc -p ."
+    },
+    "dependencies": {
+        "telegraf": "^4.16.3",
+        "dotenv": "^16.3.1",
+        "uuid": "^9.0.1"
+    },
+    "devDependencies": {
+        "@types/uuid": "^9.0.8",
+        "@types/node": "^18.18.8",
+        "nodemon": "^2.0.22",
+        "ts-node": "^10.9.1",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.2.2"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

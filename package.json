@@ -1,20 +1,31 @@
 {
-  "name": "youth-with-dreams",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "prettier": "^3.2.5",
-    "turbo": "latest"
-  },
-  "packageManager": "pnpm@8.9.0",
-  "engines": {
-    "node": ">=18"
-  }
+    "name": "youth-with-dreams",
+    "private": true,
+    "scripts": {
+        "commit": "cz-customizable",
+        "build": "turbo build",
+        "dev": "turbo dev",
+        "dev:tme-app": "turbo dev --scope=tme-app",
+        "dev:tme-bot": "turbo dev --scope=tme-bot",
+        "lint": "turbo lint",
+        "format": "npx prettier --write ."
+    },
+    "devDependencies": {
+        "@repo/eslint-config": "workspace:*",
+        "@repo/typescript-config": "workspace:*",
+        "cz-conventional-changelog": "^3.3.0",
+        "cz-customizable": "^7.0.0",
+        "prettier": "^3.2.5",
+        "turbo": "latest"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-customizable/"
+        }
+    },
+    "commit": "./node_modules/cz-customizable/standalone.js",
+    "packageManager": "pnpm@8.9.0",
+    "engines": {
+        "node": ">=18"
+    }
 }
