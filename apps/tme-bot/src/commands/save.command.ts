@@ -11,7 +11,7 @@ export default {
             ? ctx.message.message_thread_id
             : undefined;
         if (isInEnum(topic, Topics)) {
-            ctx.react('👍');
+            ctx.react('👌');
         }
     },
 };
