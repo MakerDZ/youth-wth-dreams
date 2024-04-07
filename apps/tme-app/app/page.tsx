@@ -1,20 +1,17 @@
 'use client';
 
-import { useTheme } from 'next-themes';
 import { useTelegram } from '../providers/Telegram';
 import { useSearchParams } from 'next/navigation';
 
 export default function Page(): JSX.Element {
     const searchParams = useSearchParams();
     const { user, webApp } = useTelegram();
-    const { theme, setTheme } = useTheme();
-    setTheme(webApp?.colorScheme!);
+
     return (
         <main>
             <div>
                 {user ? (
                     <div>
-                        <h1>App Theme : {theme}</h1>
                         <h1>{searchParams.get('button')}</h1>
                         <h1>Welcome {user?.username}</h1>
                         User data:

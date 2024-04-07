@@ -15,7 +15,7 @@ export default function RootLayout({
 }): JSX.Element {
     return (
         <html>
-            <body>
+            <body className="w-full h-full font-nunito">
                 <TelegramProvider>
                     <UIProvider>{children}</UIProvider>
                 </TelegramProvider>
