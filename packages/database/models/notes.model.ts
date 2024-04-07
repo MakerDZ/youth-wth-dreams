@@ -12,7 +12,7 @@ enum NoteType {
     this_year_target = 'this_year_target',
 }
 
-interface TypeDreams extends Document {
+interface TypeNote extends Document {
     accountId: string;
     type: NoteType;
     note: string;
@@ -22,15 +22,15 @@ interface TypeDreams extends Document {
     updatedAt: Date;
 }
 
-const dreamSchema: mongoose.Schema<TypeDreams> = new mongoose.Schema(
+const noteSchema: mongoose.Schema<TypeNote> = new mongoose.Schema(
     {
-        accountId: { type: String, unique: true, required: true },
+        accountId: { type: String, required: true },
         type: {
             type: String,
             enum: Object.values(NoteType).map((value) => value.toString()),
             required: true,
         },
-        note: { type: String, unique: true, required: true },
+        note: { type: String, required: true },
         attachment: [{ type: String, required: false }],
         isAnonymous: { type: Boolean, required: true },
     },
@@ -39,4 +39,4 @@ const dreamSchema: mongoose.Schema<TypeDreams> = new mongoose.Schema(
     }
 );
 
-export default mongoose.model<TypeDreams>('Dreams', dreamSchema);
+export default mongoose.model<TypeNote>('Note', noteSchema);
