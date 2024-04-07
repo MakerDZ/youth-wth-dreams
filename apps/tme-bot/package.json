@@ -10,9 +10,11 @@
         "build": "tsc -p ."
     },
     "dependencies": {
+        "mongoose": "^8.3.0",
         "telegraf": "^4.16.3",
         "dotenv": "^16.3.1",
-        "uuid": "^9.0.1"
+        "uuid": "^9.0.1",
+        "@ywd/database": "workspace:*"
     },
     "devDependencies": {
         "@types/uuid": "^9.0.8",

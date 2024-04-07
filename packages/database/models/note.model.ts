@@ -39,4 +39,5 @@ const noteSchema: mongoose.Schema<TypeNote> = new mongoose.Schema(
     }
 );
 
-export default mongoose.model<TypeNote>('Note', noteSchema);
+const noteModel = mongoose.model<TypeNote>('Note', noteSchema);
+export { noteModel };

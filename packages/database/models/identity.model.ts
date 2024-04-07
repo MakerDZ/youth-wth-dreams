@@ -27,7 +27,7 @@ const identitySchema: mongoose.Schema<TypeIdentity> = new mongoose.Schema(
         password: { type: String, required: false },
         user: {
             name: { type: String, required: false },
-            username: { type: String, required: false },
+            username: { type: String, default: uuidv4, unique: true },
             avatar: { type: String, required: false },
             bio: { type: String, required: false },
         },
@@ -44,4 +44,5 @@ const identitySchema: mongoose.Schema<TypeIdentity> = new mongoose.Schema(
     }
 );
 
-export default mongoose.model<TypeIdentity>('Identity', identitySchema);
+const identityModel = mongoose.model<TypeIdentity>('Identity', identitySchema);
+export { identityModel };

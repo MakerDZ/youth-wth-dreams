@@ -2,8 +2,10 @@ import { bot } from '../libs/bot';
 import { Markup } from 'telegraf';
 
 export default function event() {
+    //Forward this message from the about topic channel.
     const chatId = '-1002109546771';
     const messageId = 113;
+
     bot.action('about-community', async (ctx) => {
         const toUserId = ctx.from.id;
         ctx.telegram
