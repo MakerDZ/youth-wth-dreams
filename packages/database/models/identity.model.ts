@@ -5,6 +5,7 @@ interface TypeIdentity extends Document {
     _id: string;
     email: string;
     password: string;
+    connectId: string;
     user: {
         name: string;
         username: string;
@@ -25,6 +26,7 @@ const identitySchema: mongoose.Schema<TypeIdentity> = new mongoose.Schema(
         _id: { type: String, default: uuidv4 },
         email: { type: String, required: false, unique: true },
         password: { type: String, required: false },
+        connectId: { type: String, required: true, unique: true },
         user: {
             name: { type: String, required: false },
             username: { type: String, default: uuidv4, unique: true },
