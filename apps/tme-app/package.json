@@ -12,6 +12,7 @@
         "@hookform/resolvers": "^3.3.4",
         "@nextui-org/button": "^2.0.27",
         "@nextui-org/card": "^2.0.24",
+        "@nextui-org/chip": "^2.0.25",
         "@nextui-org/input": "^2.1.17",
         "@nextui-org/react": "^2.2.10",
         "@nextui-org/spinner": "^2.0.25",
@@ -25,6 +26,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-hook-form": "^7.51.2",
+        "react-hot-toast": "^2.4.1",
         "zod": "^3.22.4"
     },
     "devDependencies": {

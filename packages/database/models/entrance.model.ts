@@ -23,5 +23,9 @@ const entranceSchema: mongoose.Schema<TypeEntrance> = new mongoose.Schema(
     }
 );
 
-const entranceModel = mongoose.model<TypeEntrance>('Entrance', entranceSchema);
+const modelName = 'Entrance';
+const entranceModel =
+    (mongoose.models[modelName] as mongoose.Model<TypeEntrance>) ||
+    mongoose.model<TypeEntrance>(modelName, entranceSchema);
+
 export { entranceModel };

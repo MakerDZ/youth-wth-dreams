@@ -1,20 +1,23 @@
 {
-    "extends": "@repo/typescript-config/nextjs.json",
-    "compilerOptions": {
-        "declaration": false,
-        "declarationMap": false,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ]
-    },
-    "include": [
-        "next-env.d.ts",
-        "next.config.js",
-        "**/*.ts",
-        "**/*.tsx",
-        ".next/types/**/*.ts"
+  "extends": "@repo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
+    "plugins": [
+      {
+        "name": "next"
+      }
     ],
-    "exclude": ["node_modules"]
+    "strictNullChecks": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "next.config.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

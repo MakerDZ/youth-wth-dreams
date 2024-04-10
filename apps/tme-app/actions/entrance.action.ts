@@ -1,55 +1,77 @@
 'use server';
 
 import { action } from '../lib/safe-action';
-import { EntranceSchema } from '../validations/entrance.validation';
+import { entrance } from '../services/entrance.service';
+import { identity } from '../services/identity.service';
+import { generateToken } from '../utils/generateToken';
+import { EntranceSchema } from '../schema/entrance.schema';
 import { z } from 'zod';
 
-export const entranceAction = action(
+export const EntranceActionCreate = action(
     EntranceSchema.extend({
         UserId: z.string(),
         ChatId: z.string(),
         QueryId: z.string(),
     }),
     async ({ Dreams, Executions, Motivation, UserId, ChatId, QueryId }) => {
-        // create user
-        // create entrance
-        console.log(Dreams, Executions, Motivation, UserId, ChatId, QueryId);
         const queryParams = new URLSearchParams({
             web_app_query_id: QueryId,
             result: JSON.stringify({
                 type: 'article',
-                id: 'unique-id',
-                title: 'Message from Mini App',
+                id: generateToken(),
+                title: 'Successfully Submitted.',
                 input_message_content: {
                     message_text: '!filled_entrance',
                 },
             }),
         });
-
         const apiUrl = `https://api.telegram.org/bot${process.env.BOT_TOKEN}/answerWebAppQuery?${queryParams.toString()}`;
 
-        const result = await fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.ok) {
-                    return {
-                        success: true,
-                    };
-                } else {
-                    // Handle the error case
-                    console.error('Failed to send message:', data.description);
-                    return {
-                        success: false,
-                    };
-                }
-            })
-            .catch((error) => {
-                console.error('Error sending message:', error);
-                return {
-                    success: false,
-                };
-                // Handle any errors that occurred during the request
+        try {
+            const newIdentity = await identity.create(ChatId, UserId);
+            if (!newIdentity._id) {
+                throw new Error('Failed to create new identity');
+            }
+
+            await entrance.create({
+                accountId: newIdentity._id,
+                previousDreams: Dreams,
+                previousExecutions: Executions,
+                motivationToJoin: Motivation,
             });
-        return result;
+
+            const result = await fetch(apiUrl)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(
+                            `HTTP error! status: ${response.status}`
+                        );
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    if (!data.ok) {
+                        throw new Error(
+                            `Failed to send message: ${data.description}`
+                        );
+                    }
+                    return { success: true, message: 'success!' };
+                });
+
+            return result;
+        } catch (error: any) {
+            console.error('Error in EntranceActionCreate:', error);
+            return {
+                success: false,
+                message: error.message,
+            };
+        }
     }
 );
+
+export const EntranceActionValidate = async (
+    chatId: string,
+    userId: string
+): Promise<boolean> => {
+    return await identity.exist(chatId, userId);
+};

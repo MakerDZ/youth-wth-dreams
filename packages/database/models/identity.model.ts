@@ -46,5 +46,9 @@ const identitySchema: mongoose.Schema<TypeIdentity> = new mongoose.Schema(
     }
 );
 
-const identityModel = mongoose.model<TypeIdentity>('Identity', identitySchema);
+const modelName = 'Identity';
+const identityModel =
+    (mongoose.models[modelName] as mongoose.Model<TypeIdentity>) ||
+    mongoose.model<TypeIdentity>(modelName, identitySchema);
+
 export { identityModel };

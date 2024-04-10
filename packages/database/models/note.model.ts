@@ -39,5 +39,9 @@ const noteSchema: mongoose.Schema<TypeNote> = new mongoose.Schema(
     }
 );
 
-const noteModel = mongoose.model<TypeNote>('Note', noteSchema);
+const modelName = 'Note';
+const noteModel =
+    (mongoose.models[modelName] as mongoose.Model<TypeNote>) ||
+    mongoose.model<TypeNote>(modelName, noteSchema);
+
 export { noteModel };
