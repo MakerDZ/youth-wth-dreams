@@ -8,14 +8,14 @@ import { useSearchParams } from 'next/navigation';
 import { Spinner } from '@nextui-org/spinner';
 import { useTelegram } from '../../providers/Telegram';
 import { EntranceActionCreate } from '../../actions/entrance.action';
-import { TypeEntranceSchema } from '../../schema/entrance.schema';
-import TeleTheme from '../TeleTheme';
 import {
-    handleSubmit,
-    isSubmitting,
-    register,
-} from '../../validation/entrance.validation';
+    EntranceSchema,
+    TypeEntranceSchema,
+} from '../../schema/entrance.schema';
+import TeleTheme from '../TeleTheme';
 import { useAfterSubmit } from '../../hooks/afterSubmit';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
 export default function Entrance(): JSX.Element {
     const searchParams = useSearchParams();
@@ -23,6 +23,13 @@ export default function Entrance(): JSX.Element {
     const userId = searchParams && searchParams.get('userId');
     const { execute, result, status } = useAction(EntranceActionCreate);
     const { webApp } = useTelegram();
+    const {
+        handleSubmit,
+        formState: { isSubmitting },
+        register,
+    } = useForm<TypeEntranceSchema>({
+        resolver: zodResolver(EntranceSchema),
+    });
     useAfterSubmit({
         success: result.data?.success,
         message: result.data?.message,
