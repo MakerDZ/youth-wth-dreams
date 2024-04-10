@@ -9,7 +9,12 @@ export default {
             const topic = ctx.message.is_topic_message
                 ? ctx.message.message_thread_id
                 : undefined;
-            bot.telegram.sendMessage(chatId, `${topic}`, {
+            if (topic) {
+                return bot.telegram.sendMessage(chatId, `${topic}`, {
+                    message_thread_id: topic,
+                });
+            }
+            return bot.telegram.sendMessage(chatId, `${chatId}`, {
                 message_thread_id: topic,
             });
         } catch (error) {
