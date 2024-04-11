@@ -1,5 +1,5 @@
 export function checkCommand(str: string): string | null {
-    if (str.startsWith('!channelId')) {
+    if (str.toLocaleLowerCase().startsWith('!channelid')) {
         return 'channelId';
     } else if (str.toLocaleLowerCase().startsWith('!save')) {
         return 'save';

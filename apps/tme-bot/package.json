@@ -10,15 +10,19 @@
         "build": "tsc -p ."
     },
     "dependencies": {
+        "@ywd/database": "workspace:*",
+        "dotenv": "^16.3.1",
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
         "mongoose": "^8.3.0",
         "telegraf": "^4.16.3",
-        "dotenv": "^16.3.1",
-        "uuid": "^9.0.1",
-        "@ywd/database": "workspace:*"
+        "uuid": "^9.0.1"
     },
     "devDependencies": {
-        "@types/uuid": "^9.0.8",
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
         "@types/node": "^18.18.8",
+        "@types/uuid": "^9.0.8",
         "nodemon": "^2.0.22",
         "ts-node": "^10.9.1",
         "ts-node-dev": "^2.0.0",

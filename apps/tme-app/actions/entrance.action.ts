@@ -6,6 +6,8 @@ import { identity } from '../services/identity.service';
 import { generateToken } from '../utils/generateToken';
 import { EntranceSchema } from '../schema/entrance.schema';
 import { z } from 'zod';
+import { encrypt } from '../utils/encrypt-decrypt';
+import { entranceAlert } from '../utils/entranceAlert';
 
 export const EntranceActionCreate = action(
     EntranceSchema.extend({
@@ -39,6 +41,9 @@ export const EntranceActionCreate = action(
                 previousExecutions: Executions,
                 motivationToJoin: Motivation,
             });
+
+            const encryptedId = encrypt(newIdentity._id);
+            entranceAlert(encryptedId);
 
             const result = await fetch(apiUrl)
                 .then((response) => {
