@@ -24,7 +24,7 @@ interface TypeIdentity extends Document {
 const identitySchema: mongoose.Schema<TypeIdentity> = new mongoose.Schema(
     {
         _id: { type: String, default: uuidv4 },
-        email: { type: String, required: false, unique: true },
+        email: { type: String, required: false },
         password: { type: String, required: false },
         connectId: { type: String, required: true, unique: true },
         user: {

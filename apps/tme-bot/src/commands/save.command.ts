@@ -2,6 +2,7 @@ import { isInEnum } from '../utils/inEnum';
 import { Topics } from '../enums/topic.enum';
 import { identity } from '../services/identity.service';
 import { note } from '../services/note.service';
+import { entrance } from '../services/entrance.service';
 
 export default {
     name: 'save',
@@ -24,14 +25,25 @@ export default {
                         }
                     );
                 }
-                await note.create({
-                    accountId: Identity._id,
-                    type: noteType,
-                    note: noteText,
-                    attachment: [],
-                    isAnonymous: false,
-                });
-                ctx.react('👌');
+                const entranceForm = await entrance.get(Identity._id);
+                if (entranceForm && entranceForm.approved) {
+                    await note.create({
+                        accountId: Identity._id,
+                        type: noteType,
+                        note: noteText,
+                        attachment: [],
+                        isAnonymous: false,
+                    });
+                    return ctx.react('👌');
+                } else {
+                    await ctx.reply(
+                        'သင့်ရဲ့ account သည် Entrance Form Qualify မဖြစ်ပဲ telegram group ထဲ join ထား သော account ဖြစ်သဖြင့် save ၍မရနိုင်ပါ။',
+                        {
+                            reply_to_message_id: ctx.message.message_id,
+                        }
+                    );
+                    return ctx.react('👀');
+                }
             }
         } catch (error) {
             throw new Error(
