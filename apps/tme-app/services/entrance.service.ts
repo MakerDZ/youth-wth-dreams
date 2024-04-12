@@ -28,7 +28,33 @@ const get = async (accountId: string) => {
     }
 };
 
+const makeApprove = async (accountId: string) => {
+    try {
+        const entranceForm = await entranceModel.findOne({
+            accountId,
+        });
+        if (entranceForm) {
+            entranceForm.approved = true;
+            await entranceForm.save();
+        }
+    } catch (error) {
+        throw new Error('Error updating entrance form : \n\n' + error);
+    }
+};
+
+const remove = async (accountId: string) => {
+    try {
+        await entranceModel.deleteOne({
+            accountId,
+        });
+    } catch (error) {
+        throw new Error('Error deleting entrance form : \n\n' + error);
+    }
+};
+
 export const entrance = {
     create,
     get,
+    makeApprove,
+    remove,
 };

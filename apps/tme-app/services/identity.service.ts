@@ -42,7 +42,26 @@ const exist = async (chatId: string, userId: string) => {
     }
 };
 
+const getById = async (accountId: string) => {
+    try {
+        const identity = await identityModel.findById(accountId);
+        return identity;
+    } catch (error) {
+        throw new Error('Error fetching identity by Id : \n\n' + error);
+    }
+};
+
+const remove = async (accountId: string) => {
+    try {
+        await identityModel.deleteOne({ _id: accountId });
+    } catch (error) {
+        throw new Error('Error deleting identity by Id : \n\n' + error);
+    }
+};
+
 export const identity = {
     create,
     exist,
+    getById,
+    remove,
 };

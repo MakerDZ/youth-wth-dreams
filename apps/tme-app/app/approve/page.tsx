@@ -1,5 +1,7 @@
-import DecisionButton from '../../components/approve/DecisionButton';
+import { platform } from 'os';
+import { DecisionButton } from '../../components/approve/DecisionButton';
 import { entrance } from '../../services/entrance.service';
+import { identity } from '../../services/identity.service';
 import { decrypt } from '../../utils/encrypt-decrypt';
 import { Card, CardBody } from '@nextui-org/card';
 import { Textarea } from '@nextui-org/input';
@@ -12,7 +14,12 @@ export default async function async({
     try {
         const accountId = decrypt(searchParams?.id ? searchParams.id : '');
         const Entrance = await entrance.get(accountId!);
-        if (Entrance && !Entrance.approved) {
+        const Identity = await identity.getById(accountId!);
+        const chatId = Identity?.platform.filter(
+            (platform) => platform.name == 'telegram'
+        )[0]?.chatId;
+
+        if (Entrance && !Entrance.approved && Identity) {
             return (
                 <main className="w-full h-full">
                     <nav className="w-full py-7">
@@ -60,12 +67,15 @@ export default async function async({
                                 placeholder="အခု community ​လေးက​နေ ဘာ​တွေ​မျှော်လင့်ပါသလဲ။"
                                 className="col-span-12 md:col-span-6 mb-6 font-bold"
                             />
-                            <DecisionButton />
+                            <DecisionButton
+                                accountId={accountId!}
+                                chatId={chatId!}
+                            />
                         </CardBody>
                     </Card>
                 </main>
             );
-        } else if (Entrance && Entrance.approved) {
+        } else if (Entrance && Entrance.approved && Identity) {
             return <>Approved</>;
         }
         return <>Invalid Request</>;
