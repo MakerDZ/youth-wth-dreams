@@ -7,7 +7,7 @@ export default function event() {
         try {
             const chatId = ctx.chat?.id;
             const userId = ctx.from.id;
-            const isExist = await identity.exist(`${chatId}`, `${userId}`);
+            const isExist = await identity.getByUserId(userId.toString());
             await ctx.answerCbQuery();
             if (!isExist) {
                 return await ctx.reply(

@@ -77,6 +77,6 @@ export const EntranceActionCreate = action(
 export const EntranceActionValidate = async (
     chatId: string,
     userId: string
-): Promise<boolean> => {
+) => {
     return await identity.exist(chatId, userId);
 };

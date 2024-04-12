@@ -1,6 +1,7 @@
 import { EntranceActionValidate } from '../../actions/entrance.action';
 import EntranceForm from '../../components/entrance/EntranceForm';
 import { Submitted } from '../../components/entrance/Submitted';
+import { entrance } from '../../services/entrance.service';
 
 export default async function async({
     searchParams,
@@ -13,7 +14,8 @@ export default async function async({
             searchParams?.userId
         );
         if (isExist) {
-            return <Submitted />;
+            const Entrance = await entrance.get(isExist?._id);
+            return <Submitted status={Entrance?.approved} />;
         }
     }
 

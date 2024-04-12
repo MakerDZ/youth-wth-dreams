@@ -2,7 +2,7 @@ import { Card, CardBody } from '@nextui-org/card';
 import { Chip } from '@nextui-org/chip';
 import TeleTheme from '../TeleTheme';
 
-export const Submitted = () => {
+export const Submitted = ({ status }: { status: boolean | undefined }) => {
     return (
         <TeleTheme>
             <main className="h-screen w-full flex flex-col justify-center relative">
@@ -20,16 +20,26 @@ export const Submitted = () => {
                     <CardBody>
                         <Chip
                             className="text-white mx-auto mb-7"
-                            color="warning"
+                            color={status ? 'success' : 'warning'}
                             variant="shadow"
                         >
-                            Status : Pending
+                            Status : {status ? 'Approved' : 'Pending'}
                         </Chip>
-                        <p className="text-center text-[#636B74]">
-                            Entrance Form ​လေးဖြည့်တာ​အောင်မြင်ပါတယ်။ Community
-                            Facilitator များမှ qualify ပေး​ပြီးသောအခါတွင် invite
-                            ​link ​လေးပြန်ပို့​ပေးပါမယ်။
-                        </p>
+                        {status ? (
+                            <p className="text-center text-[#636B74]">
+                                Community facilitator များမှ သင့်ရဲ့ entrance
+                                form ကို qualify လုပ်လိုက်ပါသည်။ Youth With
+                                Dreams Community ထဲတွင် စတင်ပြီး interact
+                                လိုရပါပြီ။
+                            </p>
+                        ) : (
+                            <p className="text-center text-[#636B74]">
+                                Entrance Form ​လေးဖြည့်တာ​အောင်မြင်ပါတယ်။
+                                Community Facilitator များမှ qualify
+                                ပေး​ပြီးသောအခါတွင် invite ​link
+                                ​လေးပြန်ပို့​ပေးပါမယ်။
+                            </p>
+                        )}
                     </CardBody>
                 </Card>
             </main>

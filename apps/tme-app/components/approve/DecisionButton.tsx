@@ -3,6 +3,7 @@ import { Button } from '@nextui-org/react';
 import { approvedAction, rejectedAction } from '../../actions/approval.action';
 import { useAction } from 'next-safe-action/hooks';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 interface DecisionButton {
@@ -14,11 +15,13 @@ export const DecisionButton: React.FC<DecisionButton> = ({
     chatId,
     accountId,
 }): JSX.Element => {
+    const router = useRouter();
     const approved = useAction(approvedAction);
     const rejected = useAction(rejectedAction);
     useEffect(() => {
         if (approved.result.data == true || rejected.result.data == true) {
             toast.success('Action completed successfully.');
+            router.refresh();
         }
     }, [approved.result, rejected.result]);
 

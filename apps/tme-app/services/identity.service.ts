@@ -32,11 +32,7 @@ const exist = async (chatId: string, userId: string) => {
             },
         });
 
-        if (!identity) {
-            return false;
-        }
-
-        return true;
+        return identity;
     } catch (error) {
         throw new Error('Error checking identity existence : \n\n' + error);
     }

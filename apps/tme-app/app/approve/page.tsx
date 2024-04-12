@@ -1,10 +1,16 @@
-import { platform } from 'os';
 import { DecisionButton } from '../../components/approve/DecisionButton';
+import { Message } from '../../components/approve/Message';
 import { entrance } from '../../services/entrance.service';
 import { identity } from '../../services/identity.service';
 import { decrypt } from '../../utils/encrypt-decrypt';
 import { Card, CardBody } from '@nextui-org/card';
 import { Textarea } from '@nextui-org/input';
+
+enum MessageStatus {
+    Approved = 'success',
+    Rejected = 'warning',
+    Invalid = 'danger',
+}
 
 export default async function async({
     searchParams,
@@ -76,10 +82,31 @@ export default async function async({
                 </main>
             );
         } else if (Entrance && Entrance.approved && Identity) {
-            return <>Approved</>;
+            return (
+                <Message
+                    message={{
+                        status: MessageStatus.Approved,
+                        content: 'Approved',
+                    }}
+                />
+            );
         }
-        return <>Invalid Request</>;
+        return (
+            <Message
+                message={{
+                    status: MessageStatus.Rejected,
+                    content: 'Rejected',
+                }}
+            />
+        );
     } catch (error) {
-        return <>Invalid Request</>;
+        return (
+            <Message
+                message={{
+                    status: MessageStatus.Invalid,
+                    content: 'Invalid Request',
+                }}
+            />
+        );
     }
 }

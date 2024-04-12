@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { bot } from '../libs/bot';
-import { Markup } from 'telegraf';
 
 const approved = async (req: Request, res: Response) => {
     const groupChatId = '-1002109546771';

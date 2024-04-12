@@ -46,5 +46,5 @@ export interface IWebApp {
     };
     HapticFeedback: any;
     close: () => void;
-    sendData: () => void;
+    sendData: (data: any) => void;
 }

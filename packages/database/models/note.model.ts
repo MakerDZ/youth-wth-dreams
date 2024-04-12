@@ -10,6 +10,7 @@ enum NoteType {
     setback = 'setback',
     short_term_target = 'short_term_target',
     this_year_target = 'this_year_target',
+    daily_planner = 'daily_planner',
 }
 
 interface TypeNote extends Document {
