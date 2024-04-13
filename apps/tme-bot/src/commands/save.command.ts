@@ -8,7 +8,10 @@ export default {
     name: 'save',
     async execute(ctx: any) {
         try {
-            const noteText = ctx.message.text.replace(/^!save/i, '');
+            const caption = ctx.message.caption;
+            const noteText = caption
+                ? caption.replace(/^!save/i, '')
+                : ctx.message.text.replace(/^!save/i, '');
             const userId = ctx.from.id;
 
             const topicId = ctx.message.is_topic_message

@@ -29,6 +29,9 @@ importers:
 
   apps/tme-app:
     dependencies:
+      '@faker-js/faker':
+        specifier: ^8.4.1
+        version: 8.4.1
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.51.2)
@@ -50,12 +53,21 @@ importers:
       '@nextui-org/spinner':
         specifier: ^2.0.25
         version: 2.0.25(@nextui-org/theme@2.1.18)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
+      '@nextui-org/tabs':
+        specifier: ^2.0.26
+        version: 2.0.26(@nextui-org/system@2.0.15)(@nextui-org/theme@2.1.18)(framer-motion@11.0.25)(react-dom@18.2.0)(react@18.2.0)(tailwind-variants@0.2.1)
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@uiw/react-heat-map':
+        specifier: ^2.2.2
+        version: 2.2.2(@babel/runtime@7.24.4)(react-dom@18.2.0)(react@18.2.0)
       '@ywd/database':
         specifier: workspace:*
         version: link:../../packages/database
+      boring-avatars:
+        specifier: ^1.10.2
+        version: 1.10.2
       framer-motion:
         specifier: ^11.0.25
         version: 11.0.25(react-dom@18.2.0)(react@18.2.0)
@@ -83,6 +95,9 @@ importers:
       react-hot-toast:
         specifier: ^2.4.1
         version: 2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
+      react-indiana-drag-scroll:
+        specifier: ^2.2.0
+        version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -652,6 +667,11 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@faker-js/faker@8.4.1:
+    resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
+    dev: false
 
   /@formatjs/ecma402-abstract@1.18.2:
     resolution: {integrity: sha512-+QoPW4csYALsQIl8GbN14igZzDbuwzcpWrku9nyMXlaqAlwRBgl5V+p0vWMGFqHOw37czNXaP/lEk4wbLgcmtA==}
@@ -3722,6 +3742,18 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
+  /@uiw/react-heat-map@2.2.2(@babel/runtime@7.24.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9aNjDd8fz6tXhWj5rQ8+5MmQRhDQOfOri2CeIyMjnHunPBagg49FIPEu7H/5pRet0JD6pUrfSyMf+UpZNX5FgA==}
+    peerDependencies:
+      '@babel/runtime': '>=7.10.0'
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@babel/runtime': 7.24.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
@@ -4106,6 +4138,10 @@ packages:
       - supports-color
     dev: false
 
+  /boring-avatars@1.10.2:
+    resolution: {integrity: sha512-uQyvmNeW6loz4Yytj7aDo0IhhuByW/YyOHtqwb3kQ/x48hum22hROA2Wn3qzrLR5JsoZ+FHjPO6z6LrXrWjegg==}
+    dev: false
+
   /bplist-parser@0.2.0:
     resolution: {integrity: sha512-z0M+byMThzQmD9NILRniCUXYsYpjwnlO8N5uCFaCqIOpqRsJCrQL9NK3JsD67CN5a08nF5oIL2bD6loTdHOuKw==}
     engines: {node: '>= 5.10.0'}
@@ -4326,6 +4362,10 @@ packages:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
     engines: {node: '>=8'}
     dev: true
+
+  /classnames@2.5.1:
+    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
+    dev: false
 
   /clean-regexp@1.0.0:
     resolution: {integrity: sha512-GfisEZEJvzKrmGWkvfhgzcz/BllN1USeqD2V6tg14OAOgaCD2Z/PUEuxnAZ/nPvmaHRG7a8y77p1T/IRQ4D1Hw==}
@@ -4606,6 +4646,10 @@ packages:
     engines: {node: '>= 14'}
     dev: true
 
+  /debounce@1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
+    dev: false
+
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -4833,6 +4877,10 @@ packages:
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  /easy-bem@1.1.1:
+    resolution: {integrity: sha512-GJRqdiy2h+EXy6a8E6R+ubmqUM08BK0FWNq41k24fup6045biQ8NXxoXimiwegMQvFFV3t1emADdGNL1TlS61A==}
+    dev: false
 
   /editor@1.0.0:
     resolution: {integrity: sha512-SoRmbGStwNYHgKfjOrX2L0mUvp9bUVv0uPppZSOMAntEbcFtoC3MKF5b3T6HQPXKIV+QGY3xPO3JK5it5lVkuw==}
@@ -7750,6 +7798,20 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - csstype
+    dev: false
+
+  /react-indiana-drag-scroll@2.2.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-+W/3B2OQV0FrbdnsoIo4dww/xpH0MUQJz6ziQb7H+oBko3OCbXuzDFYnho6v6yhGrYDNWYPuFUewb89IONEl/A==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      classnames: 2.5.1
+      debounce: 1.2.1
+      easy-bem: 1.1.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-is@16.13.1:

@@ -37,7 +37,10 @@ export default function event() {
                             );
                         }
                     }
-                    const message = ctx.message.text;
+                    const message = ctx.message.caption
+                        ? ctx.message.caption
+                        : ctx.message.text;
+                    console.log(message, 'chee pl');
                     const command = checkCommand(message);
                     if (command) {
                         const commandToExecute = commands.find(
