@@ -21,9 +21,9 @@ export const CommitHeatMap = () => {
         { date: '2016/12/04', count: 11 },
     ];
     return (
-        <div className="overflow-x-auto mt-6">
+        <div className="overflow-x-auto mt-6 text-white">
             <HeatMap
-                className="min-w-full"
+                className="min-w-full "
                 weekLabels={['', 'Mon', '', 'Wed', '', 'Fri', '']}
                 value={value}
                 width={783}

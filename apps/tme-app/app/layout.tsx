@@ -4,6 +4,7 @@ import { TelegramProvider } from '../providers/Telegram';
 import { UIProvider } from '../providers/UIProvider';
 import { dbConnect } from '../lib/database';
 import { ParamQuery } from '../providers/ParamQuery';
+import { QueryProviders } from '../providers/QueryProvider';
 
 export const metadata: Metadata = {
     title: 'Youth With Dreams',
@@ -19,11 +20,13 @@ export default async function RootLayout({
     return (
         <html>
             <body className="w-full h-full font-nunito">
-                <ParamQuery>
-                    <TelegramProvider>
-                        <UIProvider>{children}</UIProvider>
-                    </TelegramProvider>
-                </ParamQuery>
+                <QueryProviders>
+                    <ParamQuery>
+                        <TelegramProvider>
+                            <UIProvider>{children}</UIProvider>
+                        </TelegramProvider>
+                    </ParamQuery>
+                </QueryProviders>
             </body>
         </html>
     );

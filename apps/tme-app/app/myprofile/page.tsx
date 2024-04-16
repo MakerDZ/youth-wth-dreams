@@ -6,7 +6,7 @@ import TeleTheme from '../../components/TeleTheme';
 export default async function async({
     searchParams,
 }: {
-    searchParams: { profileId: string };
+    searchParams: { chatId: string; filter: string };
 }): Promise<JSX.Element> {
     return (
         <TeleTheme>
