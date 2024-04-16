@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { TelegramProvider } from '../providers/Telegram';
 import { UIProvider } from '../providers/UIProvider';
 import { dbConnect } from '../lib/database';
+import { ParamQuery } from '../providers/ParamQuery';
 
 export const metadata: Metadata = {
     title: 'Youth With Dreams',
@@ -18,9 +19,11 @@ export default async function RootLayout({
     return (
         <html>
             <body className="w-full h-full font-nunito">
-                <TelegramProvider>
-                    <UIProvider>{children}</UIProvider>
-                </TelegramProvider>
+                <ParamQuery>
+                    <TelegramProvider>
+                        <UIProvider>{children}</UIProvider>
+                    </TelegramProvider>
+                </ParamQuery>
             </body>
         </html>
     );

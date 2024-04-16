@@ -77,6 +77,9 @@ importers:
       next:
         specifier: ^14.1.1
         version: 14.1.1(react-dom@18.2.0)(react@18.2.0)
+      next-query-params:
+        specifier: ^5.0.0
+        version: 5.0.0(next@14.1.1)(react@18.2.0)(use-query-params@2.2.1)
       next-safe-action:
         specifier: ^6.2.0
         version: 6.2.0(next@14.1.1)(react@18.2.0)
@@ -98,6 +101,12 @@ importers:
       react-indiana-drag-scroll:
         specifier: ^2.2.0
         version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
+      react-use-sticky:
+        specifier: ^0.1.4
+        version: 0.1.4(react@18.2.0)
+      use-query-params:
+        specifier: ^2.2.1
+        version: 2.2.1(react-dom@18.2.0)(react@18.2.0)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -7078,6 +7087,19 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
+  /next-query-params@5.0.0(next@14.1.1)(react@18.2.0)(use-query-params@2.2.1):
+    resolution: {integrity: sha512-Zm9nc0QgrTMaQwGdbICcTDaYS4oRcXo628Ye6JQGdp/9JzlhzDpzcGRqciK0S62yAyE3b5ozFpgzY0gDUEbLtw==}
+    peerDependencies:
+      next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      use-query-params: ^2.0.0
+    dependencies:
+      next: 14.1.1(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      tslib: 2.6.2
+      use-query-params: 2.2.1(react-dom@18.2.0)(react@18.2.0)
+    dev: false
+
   /next-safe-action@6.2.0(next@14.1.1)(react@18.2.0):
     resolution: {integrity: sha512-gssUs3OLoNjLXZalrQaly38s/mUtXsIcKWGIK3jFkW8GHl0/Xhq+3G8yEEyObET2YlYqUj79K+mH3iTNBLDcMw==}
     engines: {node: '>=18.17'}
@@ -7884,6 +7906,14 @@ packages:
       - '@types/react'
     dev: false
 
+  /react-use-sticky@0.1.4(react@18.2.0):
+    resolution: {integrity: sha512-Lwe9MiApu9ybi4gO2IjW+PE37dHfmW2cwGKJpgsjXj6TYvkh6TvPBCczuD5hPjiAHLKeK/ty/2GHU505aais5g==}
+    peerDependencies:
+      react: ^16.8.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -8192,6 +8222,10 @@ packages:
       no-case: 2.3.2
       upper-case-first: 1.1.2
     dev: true
+
+  /serialize-query-params@2.0.2:
+    resolution: {integrity: sha512-1chMo1dST4pFA9RDXAtF0Rbjaut4is7bzFbI1Z26IuMub68pNCILku85aYmeFhvnY//BXUPUhoRMjYcsT93J/Q==}
+    dev: false
 
   /serve-static@1.15.0:
     resolution: {integrity: sha512-XGuRDNjXUijsUL0vl6nSD7cwURuzEgglbOaFuZM9g3kwDXOWVTck0jLzjPzGD+TazWbboZYu52/9/XPdUgne9g==}
@@ -9170,6 +9204,24 @@ packages:
       '@types/react': 18.2.61
       react: 18.2.0
       use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.61)(react@18.2.0)
+    dev: false
+
+  /use-query-params@2.2.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-i6alcyLB8w9i3ZK3caNftdb+UnbfBRNPDnc89CNQWkGRmDrm/gfydHvMBfVsQJRq3NoHOM2dt/ceBWG2397v1Q==}
+    peerDependencies:
+      '@reach/router': ^1.2.1
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+      react-router-dom: '>=5'
+    peerDependenciesMeta:
+      '@reach/router':
+        optional: true
+      react-router-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      serialize-query-params: 2.0.2
     dev: false
 
   /use-sidecar@1.1.2(@types/react@18.2.61)(react@18.2.0):
