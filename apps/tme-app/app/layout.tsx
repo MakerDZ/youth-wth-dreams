@@ -5,6 +5,7 @@ import { UIProvider } from '../providers/UIProvider';
 import { dbConnect } from '../lib/database';
 import { ParamQuery } from '../providers/ParamQuery';
 import { QueryProviders } from '../providers/QueryProvider';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: 'Youth With Dreams',
@@ -23,7 +24,9 @@ export default async function RootLayout({
                 <QueryProviders>
                     <ParamQuery>
                         <TelegramProvider>
-                            <UIProvider>{children}</UIProvider>
+                            <UIProvider>
+                                <Suspense>{children}</Suspense>
+                            </UIProvider>
                         </TelegramProvider>
                     </ParamQuery>
                 </QueryProviders>
