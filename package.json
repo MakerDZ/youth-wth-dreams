@@ -8,6 +8,7 @@
         "dev": "turbo dev",
         "dev:tme-app": "turbo dev --scope=tme-app",
         "dev:tme-bot": "turbo dev --scope=tme-bot",
+        "start:tme-app": "turbo start --scope=tme-app",
         "lint": "turbo lint",
         "format": "npx prettier --write ."
     },

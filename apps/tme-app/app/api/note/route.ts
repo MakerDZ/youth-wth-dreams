@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { identity } from '../../../services/identity.service';
 import { note } from '../../../services/note.service';
+import { dbConnect } from '../../../lib/database';
 
 interface QueryParams {
     filter: string;
@@ -8,6 +9,7 @@ interface QueryParams {
 }
 
 export async function GET(request: Request) {
+    await dbConnect;
     const { searchParams } = new URL(request.url);
     const queryParams: Partial<QueryParams> = {
         filter: searchParams.get('filter') || undefined,
