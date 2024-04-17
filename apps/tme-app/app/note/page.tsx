@@ -1,9 +1,11 @@
+import { Suspense } from 'react';
 import { Message } from '../../components/approve/Message';
 import { NoteForm } from '../../components/note/NoteForm';
 import { entrance } from '../../services/entrance.service';
 import { identity } from '../../services/identity.service';
+import Loading from '../../components/Loading';
 
-export default async function async({
+export default async function Page({
     searchParams,
 }: {
     searchParams?: {
@@ -22,7 +24,11 @@ export default async function async({
             const Entrance = await entrance.get(isExist._id);
 
             if (Entrance?.approved) {
-                return <NoteForm noteName={noteName} id={id} />;
+                return (
+                    <Suspense fallback={<Loading />}>
+                        <NoteForm noteName={noteName} id={id} />
+                    </Suspense>
+                );
             }
         }
     }

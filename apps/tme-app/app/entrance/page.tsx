@@ -1,9 +1,11 @@
+import { Suspense } from 'react';
 import { EntranceActionValidate } from '../../actions/entrance.action';
 import EntranceForm from '../../components/entrance/EntranceForm';
 import { Submitted } from '../../components/entrance/Submitted';
 import { entrance } from '../../services/entrance.service';
+import Loading from '../../components/Loading';
 
-export default async function async({
+export default async function Page({
     searchParams,
 }: {
     searchParams?: { chatId: string; userId: string };
@@ -15,9 +17,17 @@ export default async function async({
         );
         if (isExist) {
             const Entrance = await entrance.get(isExist?._id);
-            return <Submitted status={Entrance?.approved} />;
+            return (
+                <Suspense fallback={<Loading />}>
+                    <Submitted status={Entrance?.approved} />
+                </Suspense>
+            );
         }
     }
 
-    return <EntranceForm />;
+    return (
+        <Suspense fallback={<Loading />}>
+            <EntranceForm />
+        </Suspense>
+    );
 }

@@ -4,6 +4,7 @@
     "scripts": {
         "commit": "cz-customizable",
         "build": "turbo build",
+        "build:tme-app": "turbo build --scope=tme-app",
         "dev": "turbo dev",
         "dev:tme-app": "turbo dev --scope=tme-app",
         "dev:tme-bot": "turbo dev --scope=tme-bot",
