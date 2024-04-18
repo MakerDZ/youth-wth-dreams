@@ -17,7 +17,7 @@ export default {
                 );
             }
             const chatId = Identity?.platform.filter(
-                (platform) => platform.name == 'telegram'
+                (platform: any) => platform.name == 'telegram'
             )[0].chatId;
             if (chatId) {
                 bot.telegram.sendMessage(chatId, '👋 Helloo');

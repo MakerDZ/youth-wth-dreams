@@ -7,12 +7,13 @@
         "dev": "nodemon ./src/index.ts",
         "dev-node": "ts-node-dev --respawn --transpile-only src/index.ts",
         "start": "node ./build/index.js",
-        "build": "tsc -p ."
+        "build": "tsc -p .",
+        "deploy": "pm2 start ./build/index.js --name tme-bot --watch"
     },
     "dependencies": {
         "@ywd/database": "workspace:*",
-        "dotenv": "^16.3.1",
         "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
         "express": "^4.19.2",
         "mongoose": "^8.3.0",
         "telegraf": "^4.16.3",

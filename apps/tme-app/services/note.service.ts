@@ -99,12 +99,6 @@ const getSorted = async (accountId: string, noteType: string) => {
             },
         ]);
 
-        // if (result.length === 0) {
-        //     throw new Error(
-        //         'No notes found for the specified accountId and type'
-        //     );
-        // }
-
         return result;
     } catch (error) {
         console.error('Error querying notes:', error);

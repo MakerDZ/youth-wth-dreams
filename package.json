@@ -5,10 +5,13 @@
         "commit": "cz-customizable",
         "build": "turbo build",
         "build:tme-app": "turbo build --scope=tme-app",
+        "build:tme-bot": "turbo build --scope=tme-bot",
         "dev": "turbo dev",
         "dev:tme-app": "turbo dev --scope=tme-app",
         "dev:tme-bot": "turbo dev --scope=tme-bot",
         "start:tme-app": "turbo start --scope=tme-app",
+        "start:tme-bot": "turbo start --scope=tme-bot",
+        "deploy:tme-bot": "turbo deploy --scope=tme-bot",
         "lint": "turbo lint",
         "format": "npx prettier --write ."
     },

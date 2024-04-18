@@ -1,0 +1,9 @@
+version: '1'
+services:
+    tme-bot:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - '4080:4080'
+        restart: always

@@ -14,7 +14,7 @@ export default function event() {
             const approved = await isApprovedUser(userId.toString());
             if (!approved) {
                 return ctx.reply(
-                    'သင့် account သည် entrance form qualify မဖြစ် သေး သော account ဖြစ်၍ မှတ်တမ်းများ save ၍မရနိုင်ပါ။'
+                    'သင့် account သည် entrance form qualify မဖြစ် သေး သော account ဖြစ်၍ save ထား သော မှတ်တမ်းများ ကြည့်၍မရနိုင်ပါ။'
                 );
             }
             ctx.reply(
